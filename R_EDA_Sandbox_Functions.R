@@ -1,6 +1,6 @@
 ###############################################################################
 # R_EDA_Sandbox_Functions.R
-# Last updated: 2016-11-04 by MJG
+# Last updated: 2016-11-24 by JJBB
 ###############################################################################
 
 # A compilation of useful functions to [ideally] deploy on any data set
@@ -262,7 +262,7 @@ num.plots = function(df, df.num, df.fac, prob = F, norm = T,
                          xlab = paste(df.name, "$", i, sep = ""))
             }
             if (norm){
-                xfit = seq(min(df[, i]), max(df[, i]), length = 100)
+                xfit = seq(min(df[, i],na.rm=T), max(df[, i],na.rm=T), length = 100)
                 yfit = dnorm(xfit, mean = mean(df[, i]), sd = sd(df[, i]))
                 if (norm & !prob){
                     yfit = yfit * diff(h$mids[1:2]) * length(df[, i])
